@@ -413,7 +413,7 @@ MonoBehaviour:
   - {fileID: 391711709642029792, guid: fc14a2f8fab4cd843b9f2e1b6429a8c1, type: 3}
   - {fileID: 9209289234230088895, guid: 5c7ebb7a3199d414995a74060c8cbb42, type: 3}
   - {fileID: 9209289234230088895, guid: 5c7ebb7a3199d414995a74060c8cbb42, type: 3}
-  missilePrefab: {fileID: 798878616608800452, guid: 3ea51046a8b72644ebdba201cf629b10, type: 3}
+  missilePrefab: {fileID: -513081816467923979, guid: 348ad31709111f4428a9be773672b49b, type: 3}
 --- !u!4 &327531058
 Transform:
   m_ObjectHideFlags: 0
