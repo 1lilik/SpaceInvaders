@@ -12,6 +12,7 @@ public class Invader : MonoBehaviour
 {
     [SerializeField] Sprite happyCat; 
     public float stayBeforeDie;
+     public bool isDead = false;
 
     SpriteRenderer spRend;
     int animationFrame;
@@ -30,6 +31,7 @@ public class Invader : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            isDead = true;
             spRend.sprite = happyCat;
             Invoke("Die", 3);
         }

@@ -75,8 +75,9 @@ public class Invaders : MonoBehaviour
 
         foreach (Transform invader in transform)
         {
+            Invader invaderComponent = invader.GetComponent<Invader>();
 
-            if (!invader.gameObject.activeInHierarchy) //om en invader är död ska den inte kunna skjuta...
+            if (!invader.gameObject.activeInHierarchy || invader.gameObject.activeInHierarchy && invaderComponent.isDead == true) //om en invader är död ska den inte kunna skjuta...
                 continue;
 
 
