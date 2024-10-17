@@ -11,7 +11,15 @@ public class Player : MonoBehaviour
     Laser laser;
     float speed = 5f;
 
+    AudioSource audioSource;
+
     // Update is called once per frame
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         Vector3 position = transform.position;
@@ -30,6 +38,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && laser == null)
         {
             laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            audioSource.Play();
         }
     }
 

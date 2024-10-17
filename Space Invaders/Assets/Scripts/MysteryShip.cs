@@ -38,6 +38,7 @@ public class MysteryShip : MonoBehaviour
         {
             //rör sig åt höger
             transform.position += speed * Time.deltaTime * Vector3.right;
+            transform.rotation = Quaternion.Euler(180, 180, 180);
 
             if (transform.position.x >= rightDestination.x)
             {
@@ -48,9 +49,10 @@ public class MysteryShip : MonoBehaviour
         {
             //rör sig åt vänster
             transform.position += speed * Time.deltaTime * Vector3.left;
+            transform.rotation = Quaternion.Euler(180, 0, 180);
 
             if (transform.position.x <= leftDestination.x)
-            {
+            {            
                 SetInvisible();
             }
         }
@@ -65,10 +67,12 @@ public class MysteryShip : MonoBehaviour
         if (direction == 1)
         {
             transform.position = rightDestination;
+
         }
         else
         {
             transform.position = leftDestination;
+            
         }
 
         Invoke(nameof(SetVisible), cycleTime); //anropar SetVisible efter ett visst antal sekunder

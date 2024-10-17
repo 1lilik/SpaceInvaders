@@ -132,4 +132,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void BunkerDie (Bunker bunker)
+    {
+        bunker.gameObject.SetActive(false);
+    }
 }
