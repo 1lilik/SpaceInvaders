@@ -10,8 +10,9 @@ using UnityEngine;
 
 public class Invader : MonoBehaviour
 {
-    public Sprite[] animationSprites = new Sprite[2];
-    public float animationTime;
+    [SerializeField] Sprite happyCat; 
+    public float stayBeforeDie;
+     public bool isDead = false;
 
     SpriteRenderer spRend;
     int animationFrame;
@@ -20,36 +21,28 @@ public class Invader : MonoBehaviour
     private void Awake()
     {
         spRend = GetComponent<SpriteRenderer>();
-        spRend.sprite = animationSprites[0];
     }
 
     void Start()
     {
-        //Anropar AnimateSprite med ett visst tidsintervall
-        InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
-    }
 
-    //pandlar mellan olika sprited för att skapa en animation
-    private void AnimateSprite()
-    {
-        animationFrame++;
-        if (animationFrame >= animationSprites.Length)
-        {
-            animationFrame = 0;
-        }
-        spRend.sprite = animationSprites[animationFrame];
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
-            GameManager.Instance.OnInvaderKilled(this);
+            isDead = true;
+            spRend.sprite = happyCat;
+            Invoke("Die", 3);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary")) //nått nedre kanten
         {
             GameManager.Instance.OnBoundaryReached();
         }
+    }
+    private void Die()
+    {
+        GameManager.Instance.OnInvaderKilled(this);
     }
 
 }
