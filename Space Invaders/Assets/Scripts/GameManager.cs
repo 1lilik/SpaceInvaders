@@ -6,6 +6,7 @@ using UnityEditor.Timeline.Actions;
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverScreenUI;
     public static GameManager Instance { get; private set; }
 
     private Player player;
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        gameOverScreenUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -104,6 +107,9 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
+        ActivateGameOverScreen();
+        GameOver();
+
     }
 
     public void OnInvaderKilled(Invader invader)
@@ -130,6 +136,11 @@ public class GameManager : MonoBehaviour
             invaders.gameObject.SetActive(false);
             OnPlayerKilled(player);
         }
+    }
+
+    private void ActivateGameOverScreen()
+    {
+        gameOverScreenUI.SetActive(true);
     }
 
 }
