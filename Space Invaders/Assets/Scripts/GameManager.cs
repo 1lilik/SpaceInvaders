@@ -6,6 +6,7 @@ using UnityEditor.Timeline.Actions;
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverScreenUI;
     public static GameManager Instance { get; private set; }
 
     private Player player;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
-    //Används ej just nu, men ni kan använda de senare
+    //Anvï¿½nds ej just nu, men ni kan anvï¿½nda de senare
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 3;
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        gameOverScreenUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -104,6 +107,9 @@ public class GameManager : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
+        ActivateGameOverScreen();
+        GameOver();
+
     }
 
     public void OnInvaderKilled(Invader invader)
@@ -136,4 +142,9 @@ public class GameManager : MonoBehaviour
     {
         bunker.gameObject.SetActive(false);
     }
+    private void ActivateGameOverScreen()
+    {
+        gameOverScreenUI.SetActive(true);
+    }
+
 }
