@@ -7,6 +7,7 @@ using UnityEditor.Timeline.Actions;
 public class GameManager : MonoBehaviour
 {
     public GameObject gameOverScreenUI;
+    public GameObject winScreenUI;
     public static GameManager Instance { get; private set; }
 
     private Player player;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         }
 
         gameOverScreenUI.SetActive(false);
+        winScreenUI.SetActive(false);
     }
 
     private void OnDestroy()
@@ -58,12 +60,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void NewGame()
+
+    public void NewGame()
     {
 
         SetScore(0);
         SetLives(3);
         NewRound();
+        gameOverScreenUI.SetActive(false);
+        winScreenUI.SetActive(false);
     }
 
     private void NewRound()
@@ -120,7 +125,7 @@ public class GameManager : MonoBehaviour
 
         if (invaders.GetInvaderCount() == 0)
         {
-            NewRound();
+            ActivateWinScreen();
         }
     }
 
@@ -145,6 +150,16 @@ public class GameManager : MonoBehaviour
     private void ActivateGameOverScreen()
     {
         gameOverScreenUI.SetActive(true);
+    }
+
+    private void ActivateWinScreen()
+    {
+        Invaders invadersScript = GetComponent<Invaders>();
+
+        if (invadersScript.GetInvaderCount() == 0)
+        {
+            winScreenUI.SetActive(true);
+        }
     }
 
 }
