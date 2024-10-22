@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && laser == null)
         {
             laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-            audioSource.Play();
+            
 
             spRend.sprite = throwPancake;
             Invoke("IdleAnimation", timeBeforeIdleAnimation);
@@ -61,12 +61,18 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Missile") || collision.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            GameManager.Instance.OnPlayerKilled(this);
+            audioSource.Play();
+            Invoke("Playerdie", 1.5f);
         }
     }
-
+    
     private void IdleAnimation()
     {
         spRend.sprite = idle;
+    }
+
+    public void Playerdie()
+    {
+        GameManager.Instance.OnPlayerKilled(this);
     }
 }
