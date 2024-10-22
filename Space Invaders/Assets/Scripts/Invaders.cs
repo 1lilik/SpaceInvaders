@@ -17,10 +17,15 @@ public class Invaders : MonoBehaviour
 
     public Missile missilePrefab;
 
+    AudioSource audioSource;
+
+
     private void Awake()
     {
         initialPosition = transform.position;
         CreateInvaderGrid();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -85,6 +90,7 @@ public class Invaders : MonoBehaviour
             if (rand < 0.2)
             {
                 Instantiate(missilePrefab, invader.position, Quaternion.identity);
+                audioSource.Play();
                 break;
             }
         }

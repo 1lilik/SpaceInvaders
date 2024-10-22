@@ -6,11 +6,14 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
+
 public class Missile : Projectile
 {
     private void Awake()
     {
         direction = Vector3.down;
+
+
     }
 
     void Update()
