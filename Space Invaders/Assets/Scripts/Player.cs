@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     Laser laser;
     float speed = 5f;
 
+
+    public AudioClip pankaka;
+    public AudioClip playerkilled;
     AudioSource audioSource;
     private void Start()
     {
@@ -49,9 +52,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && laser == null)
         {
             laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-            
 
+            
             spRend.sprite = throwPancake;
+            audioSource.PlayOneShot(pankaka, 0.7f);
             Invoke("IdleAnimation", timeBeforeIdleAnimation);
 
         }
@@ -61,8 +65,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Missile") || collision.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            audioSource.Play();
-            Invoke("Playerdie", 1.5f);
+
+            Invoke("Playerdie", 1.2f);
+            audioSource.PlayOneShot(playerkilled, 1f);
         }
     }
     
@@ -72,7 +77,7 @@ public class Player : MonoBehaviour
     }
 
     public void Playerdie()
-    {
+    {  
         GameManager.Instance.OnPlayerKilled(this);
     }
 }
