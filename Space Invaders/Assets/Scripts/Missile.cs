@@ -8,6 +8,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Missile : Projectile
 {
+    public GameObject particles;
     private void Awake()
     {
         direction = Vector3.down;
@@ -20,6 +21,7 @@ public class Missile : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Instantiate(particles, transform.position, Quaternion.identity);
         Destroy(gameObject); //så fort den krockar med något så ska den försvinna.
     }
 

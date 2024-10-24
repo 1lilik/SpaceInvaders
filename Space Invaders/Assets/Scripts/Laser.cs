@@ -8,6 +8,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Laser : Projectile
 {
+    public GameObject pancakeParticles;
     private void Awake()
     {
         direction = Vector3.up;
@@ -21,6 +22,7 @@ public class Laser : Projectile
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CheckCollision(collision);
+        Instantiate(pancakeParticles, transform.position, Quaternion.identity);
     }
 
     void CheckCollision(Collider2D collision)
