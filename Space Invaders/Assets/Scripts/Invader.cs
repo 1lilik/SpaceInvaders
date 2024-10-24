@@ -11,12 +11,13 @@ using UnityEngine;
 
 public class Invader : MonoBehaviour
 {
+    public Sprite sadCat;
     [SerializeField] Sprite happyCat; 
     public float stayBeforeDie;
      public bool isDead = false;
     AudioSource audioSource;
 
-    SpriteRenderer spRend;
+    public SpriteRenderer spRend;
     int animationFrame;
     // Start is called before the first frame update
 
@@ -36,7 +37,7 @@ public class Invader : MonoBehaviour
         {
             isDead = true;
             spRend.sprite = happyCat;
-            Invoke("Die", 3);
+            Invoke("Die", stayBeforeDie);
             audioSource.Play();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary")) //nått nedre kanten
@@ -47,6 +48,7 @@ public class Invader : MonoBehaviour
     private void Die()
     {
         GameManager.Instance.OnInvaderKilled(this);
+        spRend.sprite = sadCat;
     }
 
 }

@@ -172,9 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ed8e5f919875d45b5ecf125437d698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sadCat: {fileID: 473933748, guid: fab57841bfdbf4f4ab3d88943a967e26, type: 3}
   happyCat: {fileID: -421960468, guid: fab57841bfdbf4f4ab3d88943a967e26, type: 3}
-  stayBeforeDie: 3
+  stayBeforeDie: 2
   isDead: 0
+  spRend: {fileID: 0}
 --- !u!82 &5553156569331996700
 AudioSource:
   m_ObjectHideFlags: 0

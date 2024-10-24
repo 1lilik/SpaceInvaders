@@ -63,12 +63,11 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-
         SetScore(0);
         SetLives(3);
         NewRound();
         gameOverScreenUI.SetActive(false);
-        winScreenUI.SetActive(false);
+        winScreenUI.SetActive(false);  
     }
 
     private void NewRound()
@@ -154,12 +153,11 @@ public class GameManager : MonoBehaviour
 
     private void ActivateWinScreen()
     {
-        Invaders invadersScript = GetComponent<Invaders>();
+        //Invaders invadersScript = GetComponent<Invaders>();
 
-        if (invadersScript.GetInvaderCount() == 0)
+       /* if (invadersScript.GetInvaderCount() == 0)
         {
+        }*/
             winScreenUI.SetActive(true);
-        }
     }
-
 }

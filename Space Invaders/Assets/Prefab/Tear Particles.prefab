@@ -43,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 2
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -3863,7 +3863,7 @@ ParticleSystem:
     inside: 1
     outside: 0
     enter: 1
-    exit: 0
+    exit: 1
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
